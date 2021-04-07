@@ -11,13 +11,14 @@ import com.stardust.moviedb.interfaces.InterfaceMovie;
 import com.stardust.moviedb.model.Movie;
 
 @Service
-public class MovieService implements InterfaceMovieService{
-	
+public class MovieService implements InterfaceMovieService {
+
 	@Autowired
 	private InterfaceMovie data;
+
 	@Override
 	public List<Movie> list() {
-		return (List<Movie>)data.findAll();
+		return (List<Movie>) data.findAll();
 	}
 
 	@Override
@@ -27,18 +28,17 @@ public class MovieService implements InterfaceMovieService{
 
 	@Override
 	public int save(Movie m) {
-		int res=0;
+		int res = 0;
 		Movie movie = data.save(m);
-		if(!movie.equals(null)) {
-			res=1;
+		if (!movie.equals(null)) {
+			res = 1;
 		}
 		return res;
 	}
 
 	@Override
 	public void delete(int id) {
-		// TODO Auto-generated method stub
-		
+		data.deleteById(id);
 	}
 
 }
